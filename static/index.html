@@ -43,7 +43,28 @@
 
       <div class="row">
 
-        <div class="span9">
+        <div class="span3">
+          <div class="row">
+            <div class="span3">
+              <h3>Add Foods</h3>
+              <form ng-submit="addFood()">
+                <input type="text" ng-model="newFood.name" placeholder="Enter food">
+                  </br>
+                <input type="text" ng-model="newFood.desc" placeholder="Enter description">
+                  </br>
+                <input class="btn-primary" type="submit" value="add">
+              </form>
+            </div>
+        </div>
+
+        <div class="row">
+          <div id="newFoodAlert" class="span3 alert alert-info" style="display: none">
+            <i class="icon-star-empty"></i> New food added!
+          </div>
+        </div>
+      </div> <!-- end span 3 -->
+
+        <div class="span6">
           <ul id="sortable1" class="connectedSortable">
             <li ng-repeat="food in optionFoods" class="ui-state-highlight">{{food.name}}</li>
           </ul>
@@ -52,22 +73,8 @@
           </ul>
         </div>
 
-      <div id="newFoodAlert" class="span3 alert alert-info" style="display: none">
-        <i class="icon-star-empty"></i> New food added!
-      </div>
 
-    </div>
-      <div class="span8">
-        <h3>Add Foods</h3>
-        <form ng-submit="addFood()">
-          <input type="text" ng-model="newFood.name" placeholder="Enter food">
-            </br>
-          <input type="text" ng-model="newFood.desc" placeholder="Enter description">
-            </br>
-          <input class="btn-primary" type="submit" value="add">
-        </form>
-      </div>
-      <div class="span3" ng-controller="UserCtrl">
+     <div class="span3" ng-controller="UserCtrl">
         <table class="table table-striped table-bordered" id="users-list">
           <thead><tr><th>Online:</th></tr></thead>
           <tr ng-repeat="user in users">
