@@ -10,6 +10,7 @@ function UserCtrl($scope) {
   newUser.on('set', function(data) {
     console.log(data);
     $scope.users.push({name: data.value.name, id: data.value.id});
+    $scope.$apply();
     console.log('set!');
   });
 

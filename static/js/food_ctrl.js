@@ -38,6 +38,7 @@ FoodCtrl.prototype.listen = function() {
 };
 
 FoodCtrl.prototype._handleNewFood = function(data) {
+  console.log('food data', data);
   this._$scope.foods.push({name: data.value.name, desc: data.value.desc});
   this._$scope.$apply();
 };
