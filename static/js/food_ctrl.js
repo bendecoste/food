@@ -34,6 +34,11 @@ function FoodCtrl($scope) {
     $scope.newFood.desc = '';
 
   }.bind(this);
+
+  var foods = this.go.key(this.prefix + '/foods');
+  foods.on('update', function() {
+    doAlert();
+  });
 }
 
 FoodCtrl.prototype.getFoods = function() {
@@ -104,15 +109,21 @@ FoodCtrl.prototype.listen = function() {
 
 var alertOn = false;
 
-FoodCtrl.prototype._handleNewFood = function(data) {
-  if(!alertOn) {
+function doAlert() {
+ if(!alertOn) {
+    console.log('show');
     $('#newFoodAlert').fadeToggle();
     setTimeout(function() {
       $('#newFoodAlert').fadeToggle();
       alertOn = !alertOn;
     }, 2000);
   }
+}
 
+
+
+FoodCtrl.prototype._handleNewFood = function(data) {
+  doAlert();
   console.log('food data', data);
   this._$scope.optionFoods.push({name: data.value.name, desc: data.value.desc});
   this._$scope.$apply();
