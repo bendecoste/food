@@ -5,3 +5,10 @@
   -o-background-size: cover;
   background-size: cover;
 }
+
+#title {
+  font-family: 'Orienta', sans-serif;
+  font-size: 75pt;
+  font-weight: bold;
+  color: white;
+}
