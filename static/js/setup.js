@@ -1,4 +1,7 @@
-$(document).ready(function() {
-  window.go = new goinstant.Platform();
-  window.prefix = 'jbowes/foodhack';
+var app = angular.module('foodhack', []);
+app.run(function($rootScope) {
+  $rootScope.go = new goinstant.Platform();
+  $rootScope.prefix = 'jbowes/foodhack';
+
+  window.go = $rootScope.go;
 });

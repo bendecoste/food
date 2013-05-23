@@ -2,6 +2,9 @@ function FoodCtrl($scope) {
   this.keys = {};
   this._$scope = $scope;
 
+  this.go = $scope.go;
+  this.prefix = $scope.prefix;
+
   this.listen();
 
   $scope.foods = [
@@ -28,7 +31,7 @@ FoodCtrl.prototype.newFood = function(food) {
 
 FoodCtrl.prototype.listen = function() {
   this.keys = {
-    newFood: window.go.key(window.prefix + '/newFood')
+    newFood: this.go.key(this.prefix + '/newFood')
   };
 
   this.keys.newFood.on('set', _.bind(this._handleNewFood, this));
