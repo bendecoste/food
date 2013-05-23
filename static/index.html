@@ -64,13 +64,21 @@
         </div>
       </div> <!-- end span 3 -->
 
-        <div class="span6">
+        <div class="span3">
+	<h3> 
+              <i class="icon-food"></i>
+	       	Available</h3>
           <ul id="sortable1" class="connectedSortable">
             <li ng-repeat="food in optionFoods" class="ui-state-highlight">
               <h4>{{food.name}}</h4>
               <p>{{food.desc}}</p>
             </li>
           </ul>
+  	</div>
+  	  <div class="span3">
+	  <h3>
+		  To Order
+              <i class="icon-food icon-flip-horizontal"></i></h3>
           <ul id="sortable2" class="connectedSortable">
             <li ng-repeat="food in selectedFoods" class="ui-state-highlight">
               <h4>{{food.name}}</h4>
