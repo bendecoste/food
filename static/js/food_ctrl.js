@@ -37,7 +37,17 @@ FoodCtrl.prototype.listen = function() {
   this.keys.newFood.on('set', _.bind(this._handleNewFood, this));
 };
 
+var alertOn = false;
+
 FoodCtrl.prototype._handleNewFood = function(data) {
+  if(!alertOn) {
+    $('#newFoodAlert').fadeToggle();
+    setTimeout(function() {
+      $('#newFoodAlert').fadeToggle();
+      alertOn = !alertOn;
+    }, 2000);
+  }
+
   console.log('food data', data);
   this._$scope.foods.push({name: data.value.name, desc: data.value.desc});
   this._$scope.$apply();

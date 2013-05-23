@@ -36,9 +36,8 @@
           </div>
         </div>
      </div>
-
      <div class='row'>
-     <div class="span12">
+     <div class="span3">
        <table class="table-condensed table-hover table-bordered">
           <thead>
             <tr>
@@ -59,11 +58,15 @@
           </tbody>
         </table>
       </div>
+      <div id="newFoodAlert" class="span3 alert alert-info" style="display: none">
+        <i class="icon-star-empty"></i> New food added!
+      </div>
+ 
     </div>
 
     <div class="row">
       <div class="span9">
-        <h3>Add Foods</h3>
+       <h3>Add Foods</h3>
         <form ng-submit="addFood()">
           <input type="text" ng-model="newFood.name" placeholder="Enter food">
             </br>
