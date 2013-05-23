@@ -2,7 +2,8 @@
   "name": "food-hack",
   "version": "0.0.1",
   "dependencies": {
-    "express": "3.1.x"
+    "express": "3.1.x",
+    "lodash": "~1.2.1"
   },
   "engines": {
     "node": "0.10.x",
