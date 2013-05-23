@@ -5,23 +5,29 @@ function FoodCtrl($scope) {
   this.go = $scope.go;
   this.prefix = $scope.prefix;
 
+  this.getFoods();
   this.dragDrop();
   this.listen();
 
-  $scope.optionFoods = [
-    { name: 'burritos', desc: 'yum' },
-    { name: 'nachos', desc: 'yum' },
-    { name: 'fries', desc: 'yum' },
-    { name: 'whatever', desc: 'yum' },
-    { name: 'dude', desc: 'yum' },
-  ];
+  $scope.optionFoods = [];
+  // $scope.optionFoods = {
+  //   'Rice': { desc: 'yum' },
+  //   'Green Curry': { desc: 'yum' },
+  //   'Red Curry': { desc:  'yum' },
+  //   'Ribs': 'yum': { desc: 'yum' },
+  //   'Spring Rolls': { desc: 'yum' }
+  // };
 
   $scope.selectedFoods = [
-    { name: 'poop' }
+    { name: 'Soda', desc: 'yes' }
   ];
 
   $scope.addFood = function() {
-    $scope.optionFoods.push({ name: $scope.newFood.name, desc: $scope.newFood.desc });
+    this._$scope.optionFoods.push({
+      name: $scope.newFood.name,
+      desc: $scope.newFood.desc
+    });
+
     this.newFood($scope.newFood);
 
     $scope.newFood.name = '';
@@ -30,15 +36,30 @@ function FoodCtrl($scope) {
   }.bind(this);
 }
 
+FoodCtrl.prototype.getFoods = function() {
+
+  var foods = this.go.key(this.prefix + '/foods');
+  // this is no good without an array
+  foods.get(function(data) {
+    _.each(data.value, function(desc, name) {
+      this._$scope.optionFoods.push({ name: name, desc: desc });
+    }.bind(this));
+  }.bind(this));
+};
+
 FoodCtrl.prototype.newFood = function(food) {
-  this.keys.newFood.set(food);
+  var foods = this.go.key(this.prefix + '/foods');
+  var update = {};
+  update[food.name] = food.desc;
+  foods.update(update);
 };
 
 FoodCtrl.prototype.dragDrop = function() {
   this.keys.sort = this.go.key(this.prefix + '/sort');
   $(function() {
     $( "#sortable1, #sortable2" ).sortable({
-      connectWith: ".connectedSortable"
+      connectWith: ".connectedSortable",
+      cancel: ".nosort"
     }).disableSelection();
   });
 
@@ -62,11 +83,14 @@ FoodCtrl.prototype.dragDrop = function() {
   this.keys.sort.on('update', function(data) {
     if (data.value.start) {
       currentTarget = data.value.start;
+      $(Sizzle(currentTarget)).addClass('nosort');
       return;
     }
 
     var start = Sizzle(currentTarget);
     var end = Sizzle(data.value.stop);
+
+    $(start).removeClass('nosort');
 
     $(start).insertBefore($(end));
   });

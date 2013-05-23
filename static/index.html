@@ -28,7 +28,7 @@
             </div>
           </div>
        </div>
- 
+
        <div class="row">
           <div class="span12">
             <h1 class="title text-center" id="title">
@@ -66,10 +66,16 @@
 
         <div class="span6">
           <ul id="sortable1" class="connectedSortable">
-            <li ng-repeat="food in optionFoods" class="ui-state-highlight">{{food.name}}</li>
+            <li ng-repeat="food in optionFoods" class="ui-state-highlight">
+              <h4>{{food.name}}</h4>
+              <p>{{food.desc}}</p>
+            </li>
           </ul>
           <ul id="sortable2" class="connectedSortable">
-            <li ng-repeat="food in selectedFoods" class="ui-state-highlight">{{food.name}}</li>
+            <li ng-repeat="food in selectedFoods" class="ui-state-highlight">
+              <h4>{{food.name}}</h4>
+              <p>{{food.desc}}</p>
+            </li>
           </ul>
         </div>
 
