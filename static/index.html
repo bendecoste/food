@@ -2,11 +2,24 @@
 <html ng-app>
   <head>
     <title>TeamFood</title>
-    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
   </head>
   <body>
     <div class="container" ng-controller="FoodCtrl">
       <div class="hero-unit">
+        <div class="row">
+          <div class="span2 offset9">
+            <div class="control-group">
+              <div class="controls">
+                <div class="input-prepend">
+                  <span class="add-on"><i class="icon-link"></i></span>
+                  <input class="span2" id="shareInput" type="text">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <table class="table-condensed table-hover table-bordered">
           <thead>
             <tr>
@@ -28,7 +41,7 @@
         </table>
       </div>
 
-      <div class="container">
+      <div class="span9">
         <h3>Add Foods</h3>
         <form ng-submit="addFood()">
           <input type="text" ng-model="newFood.name" placeholder="Enter food">
@@ -38,6 +51,14 @@
           <input class="btn-primary" type="submit" value="add">
         </form>
       </div>
+      <div class="span2" ng-controller="UserCtrl">
+        <table class="table table-striped table-bordered" id="users-list">
+          <thead><tr><th>Online:</th></tr></thead>
+          <tr ng-repeat="user in users">
+            <td>{{user.name}}</td>
+          </tr>
+        </table>
+      </div>
     </div>
     <script src="http://api.goinstant.net/build/platform.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js"></script>
@@ -45,5 +66,7 @@
     <script src="js/lodash.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/food_ctrl.js"></script>
+    <script src="js/user_ctrl.js"></script>
+    <script src="js/share.js"></script>
   </body>
 </html>
