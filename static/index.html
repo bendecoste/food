@@ -6,6 +6,7 @@
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Orienta' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <div class="container" ng-controller="FoodCtrl">
@@ -25,7 +26,7 @@
               </div>
             </div>
           </div>
-        </div>
+       </div>
         <div class="row">
           <div class="span12">
             <h1 class="title text-center" id="title">
@@ -36,37 +37,21 @@
           </div>
         </div>
      </div>
-     <div class='row'>
-     <div class="span3">
-       <table class="table-condensed table-hover table-bordered">
-          <thead>
-            <tr>
-              <div>
-                <input type="text" ng-model="query" placeholder="search for food items"></input>
-              </div>
-            <tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="food in foods | filter:query">
-              <td>
-                {{food.name}}
-              </td>
-              <td>
-                {{food.desc}}
-              </td>
-            </tr>
-          </tbody>
-        </table>
+
       </div>
-      <div id="newFoodAlert" class="span3 alert alert-info" style="display: none">
+    <div id="newFoodAlert" class="span3 alert alert-info" style="display: none">
         <i class="icon-star-empty"></i> New food added!
       </div>
+           <ul id="sortable1" class="connectedSortable">
+            <li ng-repeat="food in optionFoods" class="ui-state-highlight">{{food.name}}</li>
+          </ul>
+          <ul id="sortable2" class="connectedSortable">
+            <li ng-repeat="food in selectedFoods" class="ui-state-highlight">{{food.name}}</li>
+          </ul>
  
-    </div>
 
-    <div class="row">
-      <div class="span9">
-       <h3>Add Foods</h3>
+      <div class="span8">
+        <h3>Add Foods</h3>
         <form ng-submit="addFood()">
           <input type="text" ng-model="newFood.name" placeholder="Enter food">
             </br>
@@ -88,6 +73,7 @@
     <script src="http://api.goinstant.net/build/platform.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script src="js/lodash.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/setup.js"></script>
@@ -95,5 +81,7 @@
     <script src="js/user_ctrl.js"></script>
     <script src="js/share.js"></script>
     <script src="js/login.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/sizzle.js"></script>
   </body>
 </html>
