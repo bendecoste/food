@@ -7,6 +7,7 @@ app.use(express.logger());
 app.configure(function() {
   app.use('/js', express.static(path.join(__dirname, 'static/js')));
   app.use('/css', express.static(path.join(__dirname, 'static/css')));
+  app.use('/images', express.static(path.join(__dirname, 'static/images')));
 });
 
 app.get('/', function(request, response) {
