@@ -1,0 +1,47 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <title>TeamFood</title>
+    <link rel="stylesheet" href="static/css/bootstrap.css" />
+  </head>
+  <body>
+    <div class="container" ng-controller="FoodCtrl">
+      <div class="hero-unit">
+        <table class="table-condensed table-hover table-bordered">
+          <thead>
+            <tr>
+              <div>
+                <input type="text" ng-model="query" placeholder="search for food items"></input>
+              </div>
+            <tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="food in foods | filter:query">
+              <td>
+                {{food.name}}
+              </td>
+              <td>
+                {{food.desc}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="container">
+        <h3>Add Foods</h3>
+        <form ng-submit="addFood()">
+          <input type="text" ng-model="newFood.name" placeholder="Enter food">
+            </br>
+          <input type="text" ng-model="newFood.desc" placeholder="Enter description">
+            </br>
+          <input class="btn-primary" type="submit" value="add">
+        </form>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="static/js/bootstrap.js"></script>
+    <script src="static/js/food_ctrl.js"></script>
+  </body>
+</html>
