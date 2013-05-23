@@ -1,6 +1,4 @@
 function FoodCtrl($scope) {
-  this.platform = new goinstant.Platform();
-  this.keyPreface = 'bendecoste/foodhack';
   this.keys = {};
   this._$scope = $scope;
 
@@ -30,7 +28,7 @@ FoodCtrl.prototype.newFood = function(food) {
 
 FoodCtrl.prototype.listen = function() {
   this.keys = {
-    newFood: this.platform.key(this.keyPreface + '/newFood')
+    newFood: window.go.key(window.prefix + '/newFood')
   };
 
   this.keys.newFood.on('set', _.bind(this._handleNewFood, this));
